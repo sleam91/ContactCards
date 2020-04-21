@@ -13,7 +13,11 @@
     <main>
         <section class="top">
             <h3 class="name"></h3>
-            <img class="portrait" src="" alt="portrait">
+            <picture alt="portrait">
+                <source media="(max-width: 480px)" srcset="">
+                <source media="(min-width: 481px)" srcset="">
+                <img class="portrait" src="" alt="portrait">
+            </picture>
         </section>
 
         <section class="bottom">

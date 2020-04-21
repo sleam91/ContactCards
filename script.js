@@ -3,6 +3,7 @@ const users = data.results
 
 let rightArrow = document.getElementsByClassName("right")[0]
 let name = document.getElementsByClassName("name")[0]
+let picture = document.querySelector("picture")
 let portrait = document.getElementsByClassName("portrait")[0]
 let email = document.getElementsByClassName("email")[0]
 let phone = document.getElementsByClassName("phone")[0]
@@ -12,6 +13,9 @@ let counter = 0
 let currentUser = users[0]
 let currentName = currentUser.name
 name.innerText = `${currentName.title} ${currentName.first} ${currentName.last}`
+let pictureSource=picture.querySelectorAll("source")
+pictureSource[0].setAttribute("srcset", currentUser.picture.medium)
+pictureSource[1].setAttribute("srcset", currentUser.picture.large)
 portrait.setAttribute("src", currentUser.picture.large)
 email.innerText = currentUser.email
 phone.innerText = currentUser.phone
@@ -19,12 +23,14 @@ phone.innerText = currentUser.phone
 
 
 rightArrow.addEventListener("click", event => {
-    if (counter === users.length-1) {
+    if (counter === users.length - 1) {
         counter = -1
     }
     currentUser = users[++counter]
     currentName = currentUser.name
     name.innerText = `${currentName.title} ${currentName.first} ${currentName.last}`
+    pictureSource[0].setAttribute("srcset", currentUser.picture.medium)
+    pictureSource[1].setAttribute("srcset", currentUser.picture.large)
     portrait.setAttribute("src", currentUser.picture.large)
     email.innerText = currentUser.email
     phone.innerText = currentUser.phone
@@ -39,6 +45,8 @@ leftArrow.addEventListener("click", event => {
     currentUser = users[--counter]
     currentName = currentUser.name
     name.innerText = `${currentName.title} ${currentName.first} ${currentName.last}`
+    pictureSource[0].setAttribute("srcset", currentUser.picture.medium)
+    pictureSource[1].setAttribute("srcset", currentUser.picture.large)
     portrait.setAttribute("src", currentUser.picture.large)
     email.innerText = currentUser.email
     phone.innerText = currentUser.phone
